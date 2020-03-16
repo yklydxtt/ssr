@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
-import Header from '../components/Header'
 import { getList } from "./store/actions";
 const Home = (props) => {
     useEffect(() => {
@@ -13,17 +12,19 @@ const Home = (props) => {
     }
     return (
         <div>
-            <Header />
             <div>hello,{props.name}</div>
             {renderList()}
             <button onClick={() => { alert('hello') }}>点我试试</button>
         </div>
     )
 }
+Home.loadData = (store)=>{
+    return store.dispatch(getList())
+}
 const mapStateToProps = state => {
     return ({
-        name: state.homeReducer.name,
-        newsList: state.homeReducer.newsList
+        name: state.home.name,
+        newsList: state.home.newsList
     })
 }
 const mapDispatchToProps = dispatch => ({

@@ -1,17 +1,13 @@
 import React from 'react';
-import { StaticRouter } from 'react-router-dom';
+import { StaticRouter, Route } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux'
-import Routes from '../Routes';
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk';
-import reducer from "../store/index";
-const render = (req) => {
-    const store = createStore(reducer, applyMiddleware(thunk))
+import { renderRoutes } from "react-router-config";
+const render = (req, Routes, store) => {
     const content = renderToString(
         <Provider store={store}>
             <StaticRouter location={req.url} context={{}} >
-                <Routes />
+            {renderRoutes(Routes)}
             </StaticRouter>
         </Provider>
 
@@ -26,6 +22,11 @@ const render = (req) => {
     </head>
     <body>
         <div id="root">${content}</div>
+        <script>
+        window.context ={
+             state:${JSON.stringify(store.getState())}
+        }
+        </script>
         <script src="/index.js" ></script>
     </body>
     </html>

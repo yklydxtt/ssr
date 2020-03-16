@@ -886,6 +886,18 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 
 /***/ }),
 
+/***/ "./node_modules/react-router-config/esm/react-router-config.js":
+/*!*********************************************************************!*\
+  !*** ./node_modules/react-router-config/esm/react-router-config.js ***!
+  \*********************************************************************/
+/*! exports provided: matchRoutes, renderRoutes */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"matchRoutes\", function() { return matchRoutes; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"renderRoutes\", function() { return renderRoutes; });\n/* harmony import */ var react_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router */ \"./node_modules/react-router/esm/react-router.js\");\n/* harmony import */ var _babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/esm/extends */ \"./node_modules/@babel/runtime/helpers/esm/extends.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\nfunction matchRoutes(routes, pathname,\n/*not public API*/\nbranch) {\n  if (branch === void 0) {\n    branch = [];\n  }\n\n  routes.some(function (route) {\n    var match = route.path ? Object(react_router__WEBPACK_IMPORTED_MODULE_0__[\"matchPath\"])(pathname, route) : branch.length ? branch[branch.length - 1].match // use parent match\n    : react_router__WEBPACK_IMPORTED_MODULE_0__[\"Router\"].computeRootMatch(pathname); // use default \"root\" match\n\n    if (match) {\n      branch.push({\n        route: route,\n        match: match\n      });\n\n      if (route.routes) {\n        matchRoutes(route.routes, pathname, branch);\n      }\n    }\n\n    return match;\n  });\n  return branch;\n}\n\nfunction renderRoutes(routes, extraProps, switchProps) {\n  if (extraProps === void 0) {\n    extraProps = {};\n  }\n\n  if (switchProps === void 0) {\n    switchProps = {};\n  }\n\n  return routes ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_0__[\"Switch\"], switchProps, routes.map(function (route, i) {\n    return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router__WEBPACK_IMPORTED_MODULE_0__[\"Route\"], {\n      key: route.key || i,\n      path: route.path,\n      exact: route.exact,\n      strict: route.strict,\n      render: function render(props) {\n        return route.render ? route.render(Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__[\"default\"])({}, props, {}, extraProps, {\n          route: route\n        })) : react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(route.component, Object(_babel_runtime_helpers_esm_extends__WEBPACK_IMPORTED_MODULE_1__[\"default\"])({}, props, extraProps, {\n          route: route\n        }));\n      }\n    });\n  })) : null;\n}\n\n\n//# sourceMappingURL=react-router-config.js.map\n\n\n//# sourceURL=webpack:///./node_modules/react-router-config/esm/react-router-config.js?");
+
+/***/ }),
+
 /***/ "./node_modules/react-router-dom/esm/react-router-dom.js":
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
@@ -1122,6 +1134,18 @@ eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpack
 
 /***/ }),
 
+/***/ "./src/App.js":
+/*!********************!*\
+  !*** ./src/App.js ***!
+  \********************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _Header = _interopRequireDefault(__webpack_require__(/*! ./containers/components/Header */ \"./src/containers/components/Header/index.js\"));\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"./node_modules/react-router-config/esm/react-router-config.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar App = function App(props) {\n  return _react[\"default\"].createElement(\"div\", null, _react[\"default\"].createElement(_Header[\"default\"], null), (0, _reactRouterConfig.renderRoutes)(props.route.routes));\n};\n\nvar _default = App;\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/App.js?");
+
+/***/ }),
+
 /***/ "./src/Routes.js":
 /*!***********************!*\
   !*** ./src/Routes.js ***!
@@ -1130,7 +1154,7 @@ eval("module.exports = function(originalModule) {\n\tif (!originalModule.webpack
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n\nvar _Home = _interopRequireDefault(__webpack_require__(/*! ./containers/Home */ \"./src/containers/Home/index.js\"));\n\nvar _Login = _interopRequireDefault(__webpack_require__(/*! ./containers/Login */ \"./src/containers/Login/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar Routes = function Routes() {\n  return _react[\"default\"].createElement(\"div\", null, _react[\"default\"].createElement(_reactRouterDom.Route, {\n    exact: true,\n    path: \"/\",\n    component: _Home[\"default\"]\n  }), _react[\"default\"].createElement(_reactRouterDom.Route, {\n    exact: true,\n    path: \"/Login\",\n    component: _Login[\"default\"]\n  }));\n};\n\nvar _default = Routes;\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/Routes.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _Home = _interopRequireDefault(__webpack_require__(/*! ./containers/Home */ \"./src/containers/Home/index.js\"));\n\nvar _App = _interopRequireDefault(__webpack_require__(/*! ./App */ \"./src/App.js\"));\n\nvar _Login = _interopRequireDefault(__webpack_require__(/*! ./containers/Login */ \"./src/containers/Login/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar Routes = [{\n  path: '/',\n  component: _App[\"default\"],\n  key: 'app',\n  routes: [{\n    path: \"/\",\n    component: _Home[\"default\"],\n    exact: true,\n    loadData: function loadData(store) {\n      return _Home[\"default\"].loadData(store);\n    },\n    key: 1\n  }, {\n    path: \"/Login\",\n    component: _Login[\"default\"],\n    exact: true,\n    key: 2\n  }]\n}];\nvar _default = Routes;\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/Routes.js?");
 
 /***/ }),
 
@@ -1142,7 +1166,19 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\"));\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n\nvar _Routes = _interopRequireDefault(__webpack_require__(/*! ../Routes */ \"./src/Routes.js\"));\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _reduxThunk = _interopRequireDefault(__webpack_require__(/*! redux-thunk */ \"./node_modules/redux-thunk/es/index.js\"));\n\nvar _index = _interopRequireDefault(__webpack_require__(/*! ../store/index */ \"./src/store/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar App = function App() {\n  var store = (0, _redux.createStore)(_index[\"default\"], (0, _redux.applyMiddleware)(_reduxThunk[\"default\"]));\n  return _react[\"default\"].createElement(_reactRedux.Provider, {\n    store: store\n  }, _react[\"default\"].createElement(_reactRouterDom.BrowserRouter, null, _react[\"default\"].createElement(_Routes[\"default\"], null)));\n};\n\n_reactDom[\"default\"].hydrate(_react[\"default\"].createElement(App, null), document.getElementById(\"root\"));\n\n//# sourceURL=webpack:///./src/client/index.js?");
+eval("\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _reactDom = _interopRequireDefault(__webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\"));\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"./node_modules/react-router-dom/esm/react-router-dom.js\");\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"./node_modules/react-router-config/esm/react-router-config.js\");\n\nvar _Routes = _interopRequireDefault(__webpack_require__(/*! ../Routes */ \"./src/Routes.js\"));\n\nvar _index = __webpack_require__(/*! ../store/index */ \"./src/store/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar App = function App() {\n  var store = (0, _index.clientStore)();\n  return _react[\"default\"].createElement(_reactRedux.Provider, {\n    store: store\n  }, _react[\"default\"].createElement(_reactRouterDom.BrowserRouter, null, (0, _reactRouterConfig.renderRoutes)(_Routes[\"default\"])));\n};\n\n_reactDom[\"default\"].hydrate(_react[\"default\"].createElement(App, null), document.getElementById(\"root\"));\n\n//# sourceURL=webpack:///./src/client/index.js?");
+
+/***/ }),
+
+/***/ "./src/client/request.js":
+/*!*******************************!*\
+  !*** ./src/client/request.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _axios = _interopRequireDefault(__webpack_require__(/*! axios */ \"./node_modules/axios/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar _default = _axios[\"default\"].create({\n  baseURL: '/'\n});\n\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/client/request.js?");
 
 /***/ }),
 
@@ -1154,7 +1190,7 @@ eval("\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _react = _interopRequireWildcard(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _Header = _interopRequireDefault(__webpack_require__(/*! ../components/Header */ \"./src/containers/components/Header/index.js\"));\n\nvar _actions = __webpack_require__(/*! ./store/actions */ \"./src/containers/Home/store/actions.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nfunction _getRequireWildcardCache() { if (typeof WeakMap !== \"function\") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== \"object\" && typeof obj !== \"function\") { return { \"default\": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj[\"default\"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }\n\nvar Home = function Home(props) {\n  (0, _react.useEffect)(function () {\n    props.getList();\n  }, []);\n\n  var renderList = function renderList() {\n    return props.newsList.map(function (item) {\n      return _react[\"default\"].createElement(\"div\", {\n        key: item.id\n      }, item.title);\n    });\n  };\n\n  return _react[\"default\"].createElement(\"div\", null, _react[\"default\"].createElement(_Header[\"default\"], null), _react[\"default\"].createElement(\"div\", null, \"hello,\", props.name), renderList(), _react[\"default\"].createElement(\"button\", {\n    onClick: function onClick() {\n      alert('hello');\n    }\n  }, \"\\u70B9\\u6211\\u8BD5\\u8BD5\"));\n};\n\nvar mapStateToProps = function mapStateToProps(state) {\n  return {\n    name: state.homeReducer.name,\n    newsList: state.homeReducer.newsList\n  };\n};\n\nvar mapDispatchToProps = function mapDispatchToProps(dispatch) {\n  return {\n    getList: function getList() {\n      return dispatch((0, _actions.getList)(dispatch));\n    }\n  };\n};\n\nvar _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);\n\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/containers/Home/index.js?");
+eval("\n\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol === \"function\" && typeof Symbol.iterator === \"symbol\") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === \"function\" && obj.constructor === Symbol && obj !== Symbol.prototype ? \"symbol\" : typeof obj; }; } return _typeof(obj); }\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _react = _interopRequireWildcard(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"./node_modules/react-redux/es/index.js\");\n\nvar _actions = __webpack_require__(/*! ./store/actions */ \"./src/containers/Home/store/actions.js\");\n\nfunction _getRequireWildcardCache() { if (typeof WeakMap !== \"function\") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }\n\nfunction _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== \"object\" && typeof obj !== \"function\") { return { \"default\": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj[\"default\"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }\n\nvar Home = function Home(props) {\n  (0, _react.useEffect)(function () {\n    props.getList();\n  }, []);\n\n  var renderList = function renderList() {\n    return props.newsList.map(function (item) {\n      return _react[\"default\"].createElement(\"div\", {\n        key: item.id\n      }, item.title);\n    });\n  };\n\n  return _react[\"default\"].createElement(\"div\", null, _react[\"default\"].createElement(\"div\", null, \"hello,\", props.name), renderList(), _react[\"default\"].createElement(\"button\", {\n    onClick: function onClick() {\n      alert('hello');\n    }\n  }, \"\\u70B9\\u6211\\u8BD5\\u8BD5\"));\n};\n\nHome.loadData = function (store) {\n  return store.dispatch((0, _actions.getList)());\n};\n\nvar mapStateToProps = function mapStateToProps(state) {\n  return {\n    name: state.home.name,\n    newsList: state.home.newsList\n  };\n};\n\nvar mapDispatchToProps = function mapDispatchToProps(dispatch) {\n  return {\n    getList: function getList() {\n      return dispatch((0, _actions.getList)(dispatch));\n    }\n  };\n};\n\nvar _default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);\n\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/containers/Home/index.js?");
 
 /***/ }),
 
@@ -1166,7 +1202,19 @@ eval("\n\nfunction _typeof(obj) { \"@babel/helpers - typeof\"; if (typeof Symbol
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getList = void 0;\n\nvar _axios = _interopRequireDefault(__webpack_require__(/*! axios */ \"./node_modules/axios/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\n// export const getList = list => ({\n//     type: 'CHANGE_LIST',\n//     list\n// })\nvar getList = function getList() {\n  return function (dispatch) {\n    _axios[\"default\"].get('http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE').then(function (data) {\n      var list = data.data.data;\n      dispatch({\n        type: 'CHANGE_LIST',\n        list: list\n      }); // console.log(data.data.data)\n    });\n  };\n};\n\nexports.getList = getList;\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getList = void 0;\n\nvar _axios = _interopRequireDefault(__webpack_require__(/*! axios */ \"./node_modules/axios/index.js\"));\n\nvar _constans = __webpack_require__(/*! ./constans */ \"./src/containers/Home/store/constans.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar getList = function getList() {\n  return function (dispatch, getState, request) {\n    return request.get('/api/news.json?secret=PP87ANTIPIRATE').then(function (data) {\n      var list = data.data.data;\n      dispatch({\n        type: _constans.CHANGE_LIST,\n        list: list\n      });\n    });\n  };\n};\n\nexports.getList = getList;\n\n//# sourceURL=webpack:///./src/containers/Home/store/actions.js?");
+
+/***/ }),
+
+/***/ "./src/containers/Home/store/constans.js":
+/*!***********************************************!*\
+  !*** ./src/containers/Home/store/constans.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.CHANGE_LIST = void 0;\nvar CHANGE_LIST = 'CHANGE_LIST';\nexports.CHANGE_LIST = CHANGE_LIST;\n\n//# sourceURL=webpack:///./src/containers/Home/store/constans.js?");
 
 /***/ }),
 
@@ -1178,7 +1226,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _reducer = _interopRequireDefault(__webpack_require__(/*! ./reducer */ \"./src/containers/Home/store/reducer.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar _default = _reducer[\"default\"];\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/containers/Home/store/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nObject.defineProperty(exports, \"reducer\", {\n  enumerable: true,\n  get: function get() {\n    return _reducer[\"default\"];\n  }\n});\n\nvar _reducer = _interopRequireDefault(__webpack_require__(/*! ./reducer */ \"./src/containers/Home/store/reducer.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\n//# sourceURL=webpack:///./src/containers/Home/store/index.js?");
 
 /***/ }),
 
@@ -1190,7 +1238,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nfunction ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nvar defaultState = {\n  name: 'xiaoguoguo',\n  newsList: []\n};\n\nvar reducer = function reducer() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;\n  var action = arguments.length > 1 ? arguments[1] : undefined;\n\n  switch (action.type) {\n    case 'CHANGE_LIST':\n      return _objectSpread({}, state, {\n        newsList: action.list\n      });\n\n    default:\n      return state;\n  }\n};\n\nvar _default = reducer;\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/containers/Home/store/reducer.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _constans = __webpack_require__(/*! ./constans */ \"./src/containers/Home/store/constans.js\");\n\nfunction ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }\n\nfunction _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }\n\nvar defaultState = {\n  name: 'xiaoguoguo',\n  newsList: []\n};\n\nvar reducer = function reducer() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;\n  var action = arguments.length > 1 ? arguments[1] : undefined;\n\n  switch (action.type) {\n    case _constans.CHANGE_LIST:\n      return _objectSpread({}, state, {\n        newsList: action.list\n      });\n\n    default:\n      return state;\n  }\n};\n\nvar _default = reducer;\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/containers/Home/store/reducer.js?");
 
 /***/ }),
 
@@ -1202,7 +1250,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nvar _Header = _interopRequireDefault(__webpack_require__(/*! ../components/Header */ \"./src/containers/components/Header/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar Login = function Login() {\n  return _react[\"default\"].createElement(\"div\", null, _react[\"default\"].createElement(_Header[\"default\"], null), \"Login\");\n};\n\nvar _default = Login;\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/containers/Login/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _react = _interopRequireDefault(__webpack_require__(/*! react */ \"./node_modules/react/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar Login = function Login() {\n  return _react[\"default\"].createElement(\"div\", null, \"Login\");\n};\n\nvar _default = Login;\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/containers/Login/index.js?");
 
 /***/ }),
 
@@ -1218,6 +1266,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 
 /***/ }),
 
+/***/ "./src/server/request.js":
+/*!*******************************!*\
+  !*** ./src/server/request.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _axios = _interopRequireDefault(__webpack_require__(/*! axios */ \"./node_modules/axios/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar _default = _axios[\"default\"].create({\n  baseURL: 'http://47.95.113.63/ssr/'\n});\n\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/server/request.js?");
+
+/***/ }),
+
 /***/ "./src/store/index.js":
 /*!****************************!*\
   !*** ./src/store/index.js ***!
@@ -1226,7 +1286,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports[\"default\"] = void 0;\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _index = _interopRequireDefault(__webpack_require__(/*! ../containers/Home/store/index */ \"./src/containers/Home/store/index.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar _default = (0, _redux.combineReducers)({\n  homeReducer: _index[\"default\"]\n});\n\nexports[\"default\"] = _default;\n\n//# sourceURL=webpack:///./src/store/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.clientStore = exports.serverStore = void 0;\n\nvar _redux = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n\nvar _index = __webpack_require__(/*! ../containers/Home/store/index */ \"./src/containers/Home/store/index.js\");\n\nvar _reduxThunk = _interopRequireDefault(__webpack_require__(/*! redux-thunk */ \"./node_modules/redux-thunk/es/index.js\"));\n\nvar _request = _interopRequireDefault(__webpack_require__(/*! ../server/request */ \"./src/server/request.js\"));\n\nvar _request2 = _interopRequireDefault(__webpack_require__(/*! ../client/request */ \"./src/client/request.js\"));\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { \"default\": obj }; }\n\nvar reducer = (0, _redux.combineReducers)({\n  home: _index.reducer\n});\n\nvar serverStore = function serverStore() {\n  return (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk[\"default\"].withExtraArgument(_request[\"default\"])));\n};\n\nexports.serverStore = serverStore;\n\nvar clientStore = function clientStore() {\n  var defaultState = window.context.state;\n  return (0, _redux.createStore)(reducer, defaultState, (0, _redux.applyMiddleware)(_reduxThunk[\"default\"].withExtraArgument(_request2[\"default\"])));\n};\n\nexports.clientStore = clientStore;\n\n//# sourceURL=webpack:///./src/store/index.js?");
 
 /***/ })
 

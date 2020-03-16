@@ -1,18 +1,14 @@
 import axios from "axios"
+import { CHANGE_LIST } from './constans';
 
-// export const getList = list => ({
-//     type: 'CHANGE_LIST',
-//     list
-// })
 export const getList = () => {
-    return (dispatch) => {
-        axios.get('http://47.95.113.63/ssr/api/news.json?secret=PP87ANTIPIRATE').then((data) => {
+    return (dispatch,getState,request) => {
+        return request.get('/api/news.json?secret=PP87ANTIPIRATE').then((data) => {
             const list = data.data.data
             dispatch({
-                type: 'CHANGE_LIST',
+                type: CHANGE_LIST,
                 list
             })
-            // console.log(data.data.data)
         })
     }
 }
