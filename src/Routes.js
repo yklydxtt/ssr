@@ -1,10 +1,11 @@
 import Home from './containers/Home';
 import App from './App'
-import Login from './containers/Login';
+import Translation from './containers/Translation';
 const Routes=[{
     path:'/',
     component:App,
     key:'app',
+    loadData: (store) => App.loadData(store),
     routes:[{
         path: "/",
         component: Home,
@@ -12,8 +13,8 @@ const Routes=[{
         loadData: (store) => Home.loadData(store),
         key:1
     },{
-        path: "/Login",
-        component: Login,
+        path: "/Translation",
+        component: Translation,
         exact:true,
         key:2
     }]

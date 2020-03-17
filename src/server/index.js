@@ -18,7 +18,7 @@ app.use('/api',proxy('http://47.95.113.63', {
   }));
 
 app.get('*', (req, res) => {
-    const store = serverStore()
+    const store = serverStore(req)
     const branch = matchRoutes(Routes, req.path);
     const promises = branch.map(({ route }) => {
         return route.loadData ? route.loadData(store) : Promise.resolve(null);

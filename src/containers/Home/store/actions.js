@@ -1,4 +1,3 @@
-import axios from "axios"
 import { CHANGE_LIST } from './constans';
 
 export const getList = () => {

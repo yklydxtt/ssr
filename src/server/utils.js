@@ -1,5 +1,5 @@
 import React from 'react';
-import { StaticRouter, Route } from 'react-router-dom';
+import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux'
 import { renderRoutes } from "react-router-config";
