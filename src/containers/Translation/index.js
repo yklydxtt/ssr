@@ -15,6 +15,9 @@ const Translation = (props) => {
         {renderList()}
     </Fragment>):<Redirect to='/' />
 }
+Translation.loadData=(store)=>{
+    return store.dispatch(translationList())
+}
 const mapStateToProps = state => ({
     login: state.login.isLogin,
     translation: state.translation.translationList

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { getList } from "./store/actions";
 const Home = (props) => {
-    // console.log(props)
     useEffect(() => {
         props.getList()
     }, []);
