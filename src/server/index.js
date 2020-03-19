@@ -23,7 +23,7 @@ app.get('*', (req, res) => {
   const promises = branch.map(({ route }) => {
     if(route.loadData){
       const promise = new Promise((resolve,reject)=>{
-        route.loadData(store).then(resolve()).catch(resolve())
+        route.loadData(store).then(resolve).catch(resolve)
     })
     return promise
     }else{
@@ -32,7 +32,7 @@ app.get('*', (req, res) => {
     }
   });
   Promise.all(promises).then(() => {
-    const context = {}
+    const context = {css:[]}
     const html = render(req, Routes, store, context)
     if (context.notFound) {
       res.status(404);

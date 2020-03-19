@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import { getList } from "./store/actions";
+import style from './style.css';
+import withStyle from '../../withStyle';
 const Home = (props) => {
+    withStyle(props,style)
     useEffect(() => {
         props.getList()
     }, []);
@@ -11,7 +14,7 @@ const Home = (props) => {
         })
     }
     return (
-        <div>
+        <div className={style.test}>
             <div>hello,{props.name}</div>
             {renderList()}
             <button onClick={() => { alert('hello') }}>点我试试</button>
