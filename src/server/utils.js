@@ -2,6 +2,7 @@ import React from 'react';
 import { StaticRouter } from 'react-router-dom';
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux'
+import { Helmet } from "react-helmet";
 import { renderRoutes } from "react-router-config";
 const render = (req, Routes, store, context) => {
     const content = renderToString(
@@ -12,13 +13,13 @@ const render = (req, Routes, store, context) => {
         </Provider>
     )
     const cssStr = context.css.join()
+    const helmet = Helmet.renderStatic();
     return (`
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
         <style>${cssStr}</style>
     </head>
     <body>
